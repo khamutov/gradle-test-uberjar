@@ -15,11 +15,9 @@ dependencies {
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 task testJar(type: ShadowJar) {
     manifest {
-        attributes 'Manifest-Version': '1.0', 'Implementation-Title': 'xyz', 'Implementation-Version': '0.1.0', 'Main-Class': 'ru.butik.autotest.Main', 'SplashScreen-Image': 'splashScreenTest.png'
+        attributes 'Main-Class': 'ru.butik.autotest.Main'
     }
-    //classifier = 'tests'
     baseName = project.name + '-test'
-    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     from sourceSets.test.output
     configurations = [project.configurations.testRuntime]
 }
